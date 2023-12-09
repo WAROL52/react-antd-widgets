@@ -10,6 +10,21 @@ const meta: Meta<typeof WidgetText> = {
     className: {
       type: "string",
     },
+    variantMode: {
+      defaultValue: "light",
+      control: "inline-radio",
+      options: ["light", "dark"],
+    },
+    variantThemeColor: {
+      defaultValue: "slate",
+      control: "select",
+      options: widgetColors,
+    },
+    variantThemeLevel: {
+      defaultValue: 1,
+      control: "inline-radio",
+      options: [0, 1, 2, 3, 4, 5],
+    },
     variantBg: {
       defaultValue: "slate",
       control: "select",
