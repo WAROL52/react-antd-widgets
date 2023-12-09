@@ -43,7 +43,7 @@ export function useVariantColor({
   const isHoverableClassName = isHoverable
     ? `hover:ui-bg-${variantBg}-${
         variantBgLevel + (variantBgLevel === 50 ? 50 : 100)
-      }`
+      } hover:ui-shadow-lg`
     : "";
   const isClicableClassName = isClicable
     ? "ui-cursor-pointer ui-select-none "
@@ -56,8 +56,11 @@ export function useVariantColor({
     isClicableClassName
   );
 
-  const themeClassName = clsx();
+  const themeClassName = clsx(
+    `ui-text-${theme.color}-${theme.textLevel} ui-bg-${theme.color}-${theme.bgLevel}`
+  );
   return {
+    ...theme,
     className,
     textColorClassName,
     bgColorClassName,

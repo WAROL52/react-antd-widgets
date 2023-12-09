@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { WidgetTextDate } from "./WidgetTextDate";
+import { argTypesVariant } from "../stories/variantStories";
 
 const meta: Meta<typeof WidgetTextDate> = {
   title: "Widget/TextDate",
   component: WidgetTextDate,
   tags: ["autodocs"],
+  argTypes: { ...argTypesVariant },
 };
 
 export default meta;

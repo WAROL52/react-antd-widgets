@@ -12,6 +12,7 @@ import clsx from "clsx";
 import { LoadingOutlined } from "@ant-design/icons";
 import { WidgetTextDate } from "./WidgetTextDate";
 import { useVariantColor } from "../hooks/useVariantColor";
+import { useMotionProps } from "../hooks/useMotionProps";
 export type WidgetTextType = "Title" | "Paragraph" | "Text" | "Link" | "Tag";
 
 export type WidgetTextTypeProps = {
@@ -100,7 +101,7 @@ function TextContainer({
   children,
   motionProps,
   icon,
-  isLoading,
+  isLoading = false,
   isFetching,
   loadingText,
   isClicable,
@@ -112,10 +113,8 @@ function TextContainer({
       layout === "span" && isLoading ? loadingText || children : children;
     icon = <LoadingOutlined />;
   }
-  const defaultMotionProps: MotionProps = {
-    whileHover: isHoverable ? { scale: 1.01 } : undefined,
-    whileTap: isClicable ? { scale: 0.999 } : undefined,
-  };
+
+  const defaultMotionProps = useMotionProps({ isClicable, isHoverable });
 
   if (layout === "span")
     return (

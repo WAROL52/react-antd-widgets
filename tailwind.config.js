@@ -14,6 +14,10 @@ export default {
       pattern: /ui-text-(.+)-(.+)/,
       variants: ['hover', 'focus'],
     },
+    {
+      pattern: /ui-shadow(.*)/,
+      variants: ['hover', 'focus'],
+    },
   ],
   prefix:"ui-",
   theme: {

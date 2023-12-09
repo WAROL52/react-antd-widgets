@@ -3,17 +3,20 @@
 import dayjs from "dayjs";
 import { WidgetText } from "./WidgetText";
 import { Calendar, DatePicker, theme } from "antd";
+import { VariantProps, WidgetProps } from "../type";
 
 export type WidgetTextDateProps = {
   date: Date;
   format?: string;
   mode?: "text" | "input";
-};
+} & WidgetProps &
+  VariantProps;
 
 export function WidgetTextDate({
   date,
   format = "DD/MM/YYYY HH:mm:ss",
   mode = "text",
+  ...props
 }: WidgetTextDateProps) {
   const { token } = theme.useToken();
 
@@ -32,6 +35,7 @@ export function WidgetTextDate({
     );
   return (
     <WidgetText
+      {...props}
       popoverProps={{
         content: (
           <div style={wrapperStyle}>
