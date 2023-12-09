@@ -1,45 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { WidgetText } from "./WidgetText";
-import { widgetColorLevel, widgetColors } from "../type";
+import { argTypesVariant } from "../stories/variantStories";
 
 const meta: Meta<typeof WidgetText> = {
   title: "Widget/Text",
   component: WidgetText,
   tags: ["autodocs"],
-  argTypes: {
-    className: {
-      type: "string",
-    },
-    variantBg: {
-      defaultValue: "slate",
-      control: "select",
-      options: widgetColors,
-    },
-    variantColor: {
-      defaultValue: "slate",
-      control: "select",
-      options: widgetColors,
-    },
-    variantBgLevel: {
-      defaultValue: 50,
-      control: "select",
-      options: widgetColorLevel,
-    },
-    variantColorLevel: {
-      defaultValue: 950,
-      control: "select",
-      options: widgetColorLevel,
-    },
-    loadingText: {
-      type: "string",
-    },
-    isClicable: {
-      type: "boolean",
-    },
-    isHoverable: {
-      type: "boolean",
-    },
-  },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  argTypes: { ...argTypesVariant },
 };
 
 export default meta;

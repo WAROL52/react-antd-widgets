@@ -1,23 +1,18 @@
 "use client";
 import "../index.css";
 import { PropsWithChildren, ReactNode } from "react";
-import {
-  Popover,
-  PopoverProps,
-  Space,
-  Spin,
-  Tag,
-  TagProps,
-  Typography,
-} from "antd";
+import { Popover, Space, Spin, Tag, TagProps, Typography } from "antd";
 import { TextProps } from "antd/es/typography/Text";
 import { MotionProps, motion } from "framer-motion";
 import { TitleProps } from "antd/es/typography/Title";
 import { ParagraphProps } from "antd/es/typography/Paragraph";
 import { LinkProps } from "antd/es/typography/Link";
-import { VariantProps } from "../type";
+import { VariantProps, WidgetProps } from "../type";
 import clsx from "clsx";
 import { LoadingOutlined } from "@ant-design/icons";
+import { WidgetTextDate } from "./WidgetTextDate";
+import { useVariantColor } from "../hooks/useVariantColor";
+import { useMotionProps } from "../hooks/useMotionProps";
 export type WidgetTextType = "Title" | "Paragraph" | "Text" | "Link" | "Tag";
 
 export type WidgetTextTypeProps = {
@@ -27,21 +22,10 @@ export type WidgetTextTypeProps = {
   paragraphProps?: ParagraphProps;
   linkProps?: LinkProps;
 };
-export type WidgetTextPropsPrimary = {
-  icon?: ReactNode;
-  isLoading?: boolean;
-  isFetching?: boolean;
-  loadingText?: ReactNode | string;
-  isHoverable?: boolean;
-  isClicable?: boolean;
 
-  popoverProps?: PopoverProps;
-  motionProps?: MotionProps;
-  className?: string;
-};
 export type WidgetTextProps = PropsWithChildren<
   WidgetTextTypeProps &
-    WidgetTextPropsPrimary &
+    WidgetProps &
     VariantProps & {
       type?: WidgetTextType;
     }
@@ -62,25 +46,11 @@ export function WidgetText({
     children = <Popover {...props.popoverProps}> {children} </Popover>;
   return children;
 }
+WidgetText.Date = WidgetTextDate;
 
-function TextContent({
-  variantBg = "slate",
-  variantBgLevel = 100,
-  variantColor = "slate",
-  variantColorLevel = 950,
-  ...props
-}: WidgetTextProps) {
-  const color = `ui-text-${variantColor}-${variantColorLevel}` as const;
-  const bgcolor = `ui-bg-${variantBg}-${variantBgLevel}` as const;
-  console.log(props.isHoverable && `hover:ui-bg-${variantBg}-${500}`);
-
-  const className = clsx(
-    props.className,
-    color,
-    bgcolor,
-    props.isHoverable && `hover:ui-bg-${variantBg}-${variantBgLevel + 100}`,
-    props.isClicable && "ui-cursor-pointer ui-select-none "
-  );
+function TextContent({ ...props }: WidgetTextProps) {
+  const { className: themeClassName } = useVariantColor(props);
+  const className = clsx(props.className, themeClassName);
   if (props.type === "Text")
     return (
       <Typography.Text {...props.textProps} className={className}>
@@ -131,7 +101,7 @@ function TextContainer({
   children,
   motionProps,
   icon,
-  isLoading,
+  isLoading = false,
   isFetching,
   loadingText,
   isClicable,
@@ -143,10 +113,8 @@ function TextContainer({
       layout === "span" && isLoading ? loadingText || children : children;
     icon = <LoadingOutlined />;
   }
-  const defaultMotionProps: MotionProps = {
-    whileHover: isHoverable ? { scale: 1.01 } : undefined,
-    whileTap: isClicable ? { scale: 0.999 } : undefined,
-  };
+
+  const defaultMotionProps = useMotionProps({ isClicable, isHoverable });
 
   if (layout === "span")
     return (
