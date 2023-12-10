@@ -71,7 +71,7 @@ export function WidgetRow({
             }
             description={
               <div className={clsx(`ui-text-${color}-${textLevelComputed}`)}>
-                {description} {`ui-text-${color}-${textLevelComputed}`}
+                {description}
               </div>
             }
           />

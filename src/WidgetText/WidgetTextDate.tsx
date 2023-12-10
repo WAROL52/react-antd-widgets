@@ -1,5 +1,5 @@
 "use client";
-
+import "../index.css";
 import dayjs from "dayjs";
 import { WidgetText } from "./WidgetText";
 import { Calendar, DatePicker, theme } from "antd";
