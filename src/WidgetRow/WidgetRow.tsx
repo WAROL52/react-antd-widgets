@@ -57,10 +57,11 @@ export function WidgetRow({
       className={clsx("ui-rounded-lg", className, variantClassName)}
     >
       <Card
+        bodyStyle={{ padding: "5px 10px" }}
         loading={isLoading}
         className={clsx(bgColorClassName, textColorClassName)}
       >
-        <Flex justify="space-between" align="center">
+        <Flex justify="space-between" align={description ? "start" : "center"}>
           <Meta
             avatar={icon}
             title={
