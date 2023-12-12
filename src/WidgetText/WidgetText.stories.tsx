@@ -9,6 +9,7 @@ const meta: Meta<typeof WidgetText> = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   argTypes: { ...argTypesVariant },
+  // subcomponents:
 };
 
 export default meta;

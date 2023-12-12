@@ -9,8 +9,7 @@ import "./index.css";
  * WidgetTabs
  *
  * WidgetForm
- * WidgetFormField
- * WidgetButton
+ * WidgetField
  *
  * WidgetLayout
  *

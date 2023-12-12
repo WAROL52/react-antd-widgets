@@ -111,11 +111,11 @@ const levelLightConfig: Record<VariantThemeLevelType, LevelData> = {
   },
   "4": {
     bgLevel: 500,
-    textLevel: 900,
+    textLevel: 100,
   },
   "5": {
     bgLevel: 600,
-    textLevel: 900,
+    textLevel: 50,
   },
 };
 const levelDarkConfig: Record<VariantThemeLevelType, LevelData> = {
