@@ -66,3 +66,12 @@ export const WithPopover: Story = {
     children: "Lorem ipsum dolor sit amet.",
   },
 };
+export const WithTooltip: Story = {
+  args: {
+    children: "consectetur adipisicing elit. Repudiandae, totam.",
+    tooltipProps: {
+      title: "Je suis un Tooltip",
+      color: "blue",
+    },
+  },
+};

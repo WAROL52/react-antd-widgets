@@ -48,10 +48,20 @@ export const argTypesVariant: Partial<ArgTypes<WidgetProps & VariantProps>> = {
   loadingText: {
     type: "string",
   },
+  isLoading: {
+    type: "boolean",
+    defaultValue: false,
+  },
+  isFetching: {
+    type: "boolean",
+    defaultValue: false,
+  },
   isClicable: {
     type: "boolean",
+    defaultValue: false,
   },
   isHoverable: {
     type: "boolean",
+    defaultValue: false,
   },
 };

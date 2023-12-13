@@ -1,7 +1,16 @@
 "use client";
 import "../index.css";
 import { PropsWithChildren, ReactNode } from "react";
-import { Popover, Space, Spin, Tag, TagProps, Typography } from "antd";
+import {
+  Popover,
+  Space,
+  Spin,
+  Tag,
+  TagProps,
+  Tooltip,
+  TooltipProps,
+  Typography,
+} from "antd";
 import { TextProps } from "antd/es/typography/Text";
 import { MotionProps, motion } from "framer-motion";
 import { TitleProps } from "antd/es/typography/Title";
@@ -28,22 +37,29 @@ export type WidgetTextProps = PropsWithChildren<
     WidgetProps &
     VariantProps & {
       type?: WidgetTextType;
+      tooltipProps?: TooltipProps;
     }
 >;
 const blockList = ["Title", "Paragraph"];
 export function WidgetText({
   children: defaultChildren,
+  tooltipProps,
   ...props
 }: WidgetTextProps) {
+  if (tooltipProps) {
+    defaultChildren = <Tooltip {...tooltipProps}>{defaultChildren}</Tooltip>;
+  }
   const content = <TextContent {...props}>{defaultChildren}</TextContent>;
   const layout = blockList.includes(props.type || "") ? "div" : "span";
-  let children = (
+  let children;
+  children = (
     <TextContainer layout={layout} {...props}>
       {content}
     </TextContainer>
   );
   if (props.popoverProps)
     children = <Popover {...props.popoverProps}> {children} </Popover>;
+
   return children;
 }
 WidgetText.Date = WidgetTextDate;
