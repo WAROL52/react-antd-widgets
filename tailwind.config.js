@@ -18,6 +18,7 @@ export default {
       pattern: /ui-shadow(.*)/,
       variants: ['hover', 'focus'],
     },
+    "ui-border"
   ],
   prefix:"ui-",
   theme: {

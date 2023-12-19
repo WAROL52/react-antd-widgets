@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import {
+  VariantClassName,
   VariantModeType,
   VariantProps,
   VariantThemeLevelType,
@@ -67,7 +68,7 @@ export function useVariantColor({
     isHoverableClassName,
     isClicableClassName,
     themeClassName,
-  };
+  } as VariantClassName;
 }
 function useTheme(
   color: WidgetColorType,

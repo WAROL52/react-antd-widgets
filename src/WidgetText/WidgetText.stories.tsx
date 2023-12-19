@@ -3,13 +3,12 @@ import { WidgetText } from "./WidgetText";
 import { argTypesVariant } from "../stories/variantStories";
 
 const meta: Meta<typeof WidgetText> = {
-  title: "Widget/Text",
+  title: "Widget/Text/Text",
   component: WidgetText,
   tags: ["autodocs"],
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   argTypes: { ...argTypesVariant },
-  // subcomponents:
 };
 
 export default meta;

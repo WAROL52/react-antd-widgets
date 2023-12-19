@@ -2,17 +2,18 @@
 
 import { Button, ButtonProps, Empty, Space } from "antd";
 import { WidgetRow } from "../WidgetRow/WidgetRow";
-import { useVariantColor } from "../hooks/useVariantColor";
 import { WidgetBlockProps } from "./WidgetBlock";
 import { CloseOutlined, LoadingOutlined } from "@ant-design/icons";
 import { clsx } from "clsx";
+import { useCurrentVariantColor } from "../hooks/useCurrentVariantColor";
 
 export type WidgetTitleProps = WidgetBlockProps & {
   btnCloseProps?: ButtonProps;
 };
 
 export function WidgetTitle(props: WidgetTitleProps) {
-  const { color, textLevel, bgLevel } = useVariantColor(props);
+  const { color, textLevel, bgLevel } = useCurrentVariantColor();
+
   let extra = props.extra;
   const variantBgLevel = (
     bgLevel + 200 > 900 ? (bgLevel === 800 ? 900 : 800) : bgLevel + 200

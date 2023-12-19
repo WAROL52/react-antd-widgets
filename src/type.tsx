@@ -25,6 +25,10 @@ export const widgetColors = [
   "zinc",
   "gray",
   "slate",
+  "none",
+  "transparent",
+  "white",
+  "black",
 ] as const;
 export const widgetColorLevel = [
   50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
@@ -54,4 +58,16 @@ export type WidgetProps = {
   popoverProps?: PopoverProps;
   motionProps?: MotionProps;
   className?: string;
+};
+
+export type VariantClassName = {
+  color: WidgetColorType;
+  textLevel: WidgetColorLevelType;
+  bgLevel: WidgetColorLevelType;
+  className: string;
+  textColorClassName: `ui-text-${WidgetColorType}-${WidgetColorLevelType}`;
+  bgColorClassName: `ui-bg-${WidgetColorType}-${WidgetColorLevelType}`;
+  isHoverableClassName: string;
+  isClicableClassName: string;
+  themeClassName: string;
 };

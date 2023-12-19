@@ -3,7 +3,7 @@ import { WidgetTextDate } from "./WidgetTextDate";
 import { argTypesVariant } from "../stories/variantStories";
 
 const meta: Meta<typeof WidgetTextDate> = {
-  title: "Widget/TextDate",
+  title: "Widget/Text/Date",
   component: WidgetTextDate,
   tags: ["autodocs"],
   argTypes: { ...argTypesVariant },

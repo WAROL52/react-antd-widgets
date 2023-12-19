@@ -12,6 +12,7 @@ import {
   VerticalAlignBottomOutlined,
   VerticalAlignTopOutlined,
 } from "@ant-design/icons";
+import { VariantColorProvider } from "../contexts/VariantColorContext";
 
 export type WidgetBlockModalProps = WidgetBlockProps;
 
@@ -19,7 +20,8 @@ export function WidgetBlockModal({
   children,
   ...propsWithoutChildren
 }: WidgetBlockModalProps) {
-  const { className } = useVariantColor(propsWithoutChildren);
+  const { className, ...variantClassName } =
+    useVariantColor(propsWithoutChildren);
   const { modalProps, open, onClose, motionProps } = propsWithoutChildren;
   const [height, setHeight] = React.useState<string | number>("auto");
   const onCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -70,12 +72,19 @@ export function WidgetBlockModal({
         top: 15,
       }}
     >
-      <Spin spinning={isLoading} tip={propsWithoutChildren.loadingText}>
-        <WidgetTitle {...propsWithoutChildren} />
-        <motion.div {...motionProps} style={{ padding: "5px 10px", height }}>
-          {children}
-        </motion.div>
-      </Spin>
+      <VariantColorProvider
+        variantClassName={{ className, ...variantClassName }}
+      >
+        <Spin spinning={isLoading} tip={propsWithoutChildren.loadingText}>
+          <WidgetTitle {...propsWithoutChildren} />
+          <motion.div
+            {...motionProps}
+            style={{ padding: "5px 10px", height, overflow: "auto" }}
+          >
+            {children}
+          </motion.div>
+        </Spin>
+      </VariantColorProvider>
     </Modal>
   );
 }
